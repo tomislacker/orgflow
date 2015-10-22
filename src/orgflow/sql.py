@@ -1,7 +1,7 @@
 from sqlalchemy import Column
 from sqlalchemy import ForeignKey
 from sqlalchemy import String
-from sqlalchemy import INTEGER
+from sqlalchemy.dialects.mysql import INTEGER
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 

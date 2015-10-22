@@ -14,17 +14,18 @@ depends_on = None
 
 from alembic import op
 import sqlalchemy as sa
+from sqlalchemy.dialects.mysql import INTEGER
 
 
 def upgrade():
     op.create_table(
         'team_user_link',
         sa.Column(
-            'team_id', sa.INTEGER(unsigned=True),
+            'team_id', INTEGER(unsigned=True),
             sa.ForeignKey('team.id'), primary_key=True
         ),
         sa.Column(
-            'user_id', sa.INTEGER(unsigned=True),
+            'user_id', INTEGER(unsigned=True),
             sa.ForeignKey('user.id'), primary_key=True
         )
     )
