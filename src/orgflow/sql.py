@@ -1,4 +1,6 @@
+import datetime
 from sqlalchemy import Column
+from sqlalchemy import DateTime
 from sqlalchemy import ForeignKey
 from sqlalchemy import String
 from sqlalchemy.dialects.mysql import INTEGER
@@ -25,6 +27,7 @@ class Team(Base):
         'User',
         secondary='team_user_link'
     )
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
 
 
 class TeamUserLink(Base):
@@ -38,6 +41,7 @@ class TeamUserLink(Base):
         INTEGER(unsigned=True),
         ForeignKey('user.id'),
         primary_key=True)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
 
 
 class User(Base):
