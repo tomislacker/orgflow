@@ -15,11 +15,14 @@ class Team(Base):
     __tablename__ = 'team'
     id = Column(INTEGER(unsigned=True), primary_key=True)
     name = Column(String(128))
+    created_at = Column(
+        DateTime,
+        default=datetime.datetime.utcnow,
+        nullable=False)
     users = relationship(
         'User',
         secondary='team_user_link'
     )
-    created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
 
 
 class TeamUserLink(Base):
@@ -33,7 +36,11 @@ class TeamUserLink(Base):
         INTEGER(unsigned=True),
         ForeignKey('user.id'),
         primary_key=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
+
+    created_at = Column(
+        DateTime,
+        default=datetime.datetime.utcnow,
+        nullable=False)
 
 
 class User(Base):
