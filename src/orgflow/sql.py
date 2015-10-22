@@ -8,14 +8,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
 
-MYSQL_CREDS = {
-    "proto": "mysql",
-    "host": "127.0.0.1",
-    "user": "root",
-    "pass": "password",
-    "name": "orgflow_orgflow"
-}
-
 Base = declarative_base()
 
 
@@ -52,12 +44,3 @@ class User(Base):
         'Team',
         secondary='team_user_link'
     )
-
-
-from sqlalchemy import create_engine
-engine = create_engine("{proto}://{user}:{pass}@{host}/{name}".format(**MYSQL_CREDS))
-
-from sqlalchemy.orm import sessionmaker
-session = sessionmaker()
-session.configure(bind=engine)
-Base.metadata.create_all(engine)
