@@ -14,7 +14,7 @@ Base = declarative_base()
 class Team(Base):
     __tablename__ = 'team'
     id = Column(INTEGER(unsigned=True), primary_key=True)
-    name = Column(String(128))
+    name = Column(String(128), unique=True)
     created_at = Column(
         DateTime,
         default=datetime.datetime.utcnow,
@@ -46,7 +46,7 @@ class TeamUserLink(Base):
 class User(Base):
     __tablename__ = 'user'
     id = Column(INTEGER(unsigned=True), primary_key=True)
-    username = Column(String(128))
+    username = Column(String(128), unique=True)
     created_at = Column(
         DateTime,
         default=datetime.datetime.utcnow,
