@@ -19,7 +19,7 @@ class Team(Base):
         'User',
         secondary='team_user_link'
     )
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
 
 
 class TeamUserLink(Base):
@@ -33,7 +33,7 @@ class TeamUserLink(Base):
         INTEGER(unsigned=True),
         ForeignKey('user.id'),
         primary_key=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
 
 
 class User(Base):
