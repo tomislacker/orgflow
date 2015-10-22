@@ -47,6 +47,10 @@ class User(Base):
     __tablename__ = 'user'
     id = Column(INTEGER(unsigned=True), primary_key=True)
     username = Column(String(128))
+    created_at = Column(
+        DateTime,
+        default=datetime.datetime.utcnow,
+        nullable=False)
     teams = relationship(
         'Team',
         secondary='team_user_link'
