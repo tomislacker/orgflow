@@ -29,12 +29,12 @@ class TeamUserLink(Base):
     __tablename__ = 'team_user_link'
     team_id = Column(
         INTEGER(unsigned=True),
-        ForeignKey('team.id'),
+        ForeignKey('team.id', onupdate='CASCADE', ondelete='CASCADE'),
         primary_key=True)
 
     user_id = Column(
         INTEGER(unsigned=True),
-        ForeignKey('user.id'),
+        ForeignKey('user.id', onupdate='CASCADE', ondelete='CASCADE'),
         primary_key=True)
 
     created_at = Column(
